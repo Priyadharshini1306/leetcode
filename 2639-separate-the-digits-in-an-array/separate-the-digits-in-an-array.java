@@ -1,22 +1,17 @@
 class Solution {
     public int[] separateDigits(int[] nums) {
-        List<Integer> l = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
 
-        for (int i : nums) {
-            List<Integer> temp = new ArrayList<>();
+        for (int num : nums) {
+            String s = String.valueOf(num);
 
-            while (i > 0) {
-                temp.add(i % 10);
-                i = i / 10;
-            }
-
-            for (int j = temp.size() - 1; j >= 0; j--) {
-                l.add(temp.get(j));
+            for (char c : s.toCharArray()) {
+                list.add(c - '0');
             }
         }
 
-        return l.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
+        return list.stream()
+                   .mapToInt(Integer::intValue)
+                   .toArray();
     }
 }
