@@ -1,17 +1,9 @@
 class Solution {
     public int[] separateDigits(int[] nums) {
-        List<Integer> list = new ArrayList<>();
-
+        StringBuilder sb = new StringBuilder();
         for (int num : nums) {
-            String s = String.valueOf(num);
-
-            for (char c : s.toCharArray()) {
-                list.add(c - '0');
-            }
+            sb.append(num);
         }
-
-        return list.stream()
-                   .mapToInt(Integer::intValue)
-                   .toArray();
+        return sb.toString().chars().map(c -> c - '0').toArray();
     }
 }
